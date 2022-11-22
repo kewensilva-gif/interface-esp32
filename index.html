@@ -1,6 +1,6 @@
 <html>
     <head>
-      <meta http-equiv='refresh' content='5'/>
+      <meta http-equiv='' content='5'/>
       <title>Irrigação Automática</title>
       <style>
         * {
@@ -25,34 +25,63 @@
           padding: 2rem;
           width: 100%;
           color: #fff;
-          background-color: #04beaf;
+          background-image: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(45,163,229,1) 100%);
+          flex-wrap: wrap;
         }
         #cards {
+          padding: 5rem;
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 70px;
-          padding: 0 20rem;
           width: 100%;
+          flex-wrap: wrap;
         }
         .card {
+          border-radius: 10px;
+          background-image: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(45,163,229,1) 100%);
+          position: relative;
+        }
+        .card:hover {
+          transform: scaleY(10px);
+        }
+        .title {
+          border-top: #02135efb;
+          color: #fff;
+          line-height: 1.7rem;
+          font-size: 1.5rem;
+          font-weight: 600;
+          text-align: center;
+          padding: 2rem 0;
+          text-transform: uppercase;
+          background-color: rgb(7, 16, 34);
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          border: 2px solid rgb(0, 23, 66);
+          border-bottom: transparent;
+          height: 100px;
+        }
+        .dado {
           width: 300px;
           padding: 1.5rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          border: 3px solid #2DA3E5;
-          border-radius: 10px;
-          color: #2DA3E5;
-          font-weight: bold;
-          font-size: 2.6rem;
+          
+          /* border: 3px solid #2DA3E5; */
+          color: #ffffff;
+          font-weight: 500;
+          font-size: 1.6rem;
           text-align: center;
-          gap: 10px;
+          gap: 20px;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
         }
         .circle {
           width: 230px;
-          border:6px solid #2DA3E5;
+          border:6px solid rgba(255, 255, 255, 0.548);
+          background-image: linear-gradient(150deg, rgba(2,0,36,1) 0%, rgba(45,163,229,1) 100%);
           border-radius: 50%;
           padding: 4rem 1.7rem;
           font-size: 5rem;
@@ -61,50 +90,65 @@
           font-size: 4rem;
           font-weight: 500;
         }
+        .number {
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
         .green {
-          border: 3px solid #2de598;
-          color: #2de598;
+          background-image: linear-gradient(150deg, rgba(6,4,32,1) 0%, rgba(45,229,152,1) 100%);
         }
         .green .circle {
-          border: 5px solid #2de598;
-          color: #2de598;
+          background: linear-gradient(150deg, rgba(6,4,32,1) 0%, rgba(45,229,152,1) 100%);
         }
         .red {
-          border: 3px solid #e78c25;
-          color: #e78c25;
+          background-image: linear-gradient(150deg, rgba(195,53,52,1) 0%, rgba(231,140,37,1) 100%);
         }
         .red .circle {
-          border: 5px solid #e78c25;
-          color: #e78c25;
+          background-image: linear-gradient(150deg, rgba(195,53,52,1) 0%, rgba(231,140,37,1) 100%);
         }
         footer {
-          margin-bottom: 1.5rem;
+          margin-bottom: 2rem;
         }
       </style>
     </head>
     <body>
       <header>
         <h1>Irrigação automática</h1>  
-        <p>Data e Hora: <span id='datetime'></span></p><script>var dt = new Date();document.getElementById('datetime').innerHTML = (('0'+dt.getDate()).slice(-2)) +'.'+ (('0'+(dt.getMonth()+1)).slice(-2)) +'.'+ (dt.getFullYear()) +' '+ (('0'+dt.getHours()).slice(-2)) +':'+ (('0'+dt.getMinutes()).slice(-2));</script>
+        <p>Data e Hora: <span id='datetime'></span></p>
+        <script>
+          var dt = new Date();
+          document.getElementById('datetime').innerHTML = (('0'+dt.getDate()).slice(-2)) +'.'+ (('0'+(dt.getMonth()+1)).slice(-2)) +'.'+ (dt.getFullYear()) +' '+ (('0'+dt.getHours()).slice(-2)) +':'+ (('0'+dt.getMinutes()).slice(-2));
+        </script>
       </header>
       <section id="cards">
         <div class="card green">
-          <div class="circle">
-            <p>13<b>?</b><!-- "+String(asoilmoist)+ --></p>
+          <div class="title">
+            <p>Umidade do solo</p>
           </div>
-          <p>Umidade<br>do solo</p>
+          <div class="dado">
+            <div class="circle">
+              <p class="number">13<b>?</b><!-- "+String(asoilmoist)+ --></p>
+            </div>
+          </div>
         </div>
         <div class="card">
-          <div class="circle">
-            <p>13<b>%</b><!-- "+String(asoilmoist)+ --></p>
+          <div class="title">
+            <p>Umidade do ar</p>
           </div>
-          <p>Umidade<br>do ar</p>
+          <div class="dado">
+            <div class="circle">
+              <p class="number">13<b>%</b><!-- "+String(asoilmoist)+ --></p>
+            </div>
+          </div>
         </div>
         <div class="card red">
-          <div class="circle">
-            <p>13<b>°C</b><!-- "+String(asoilmoist)+ --></p>
+          <div class="title">
+            <p>Temperatura<br>ambiente</p>
           </div>
-          <p>Temperatura<br>ambiente</p>
+          <div class="dado">
+            <div class="circle">
+              <p class="number">13<b>°C</b><!-- "+String(asoilmoist)+ --></p>
+            </div>
+          </div>
         </div>
       </section>
 <!--       <table>
